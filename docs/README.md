@@ -1,27 +1,54 @@
-# Docs
+# SimpleDocs 📖
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.1.1.
+Documenting projects should be a delightful endeavor. At SimpleDocs, our mission is to simplify the documentation journey. Born from the experiences of a software company, we aim to empower developers with a tool that transforms GitHub repositories into beautifully curated documentation sites. With features like OpenAPI Specification (OAS) support and one-click Azure deployments on the horizon, the future looks promising.
 
-## Development server
+## Core Features 🌟
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+- Tailored for Developers: Conceived with the developer's needs in mind.
+- GitHub Integration: Effortlessly link your repositories and watch SimpleDocs work its magic.
+- Minimalistic Mastery: Zero in on the content; leave the presentation to us.
+- Built on Angular: Harnessing the power and versatility of Angular.
 
-## Code scaffolding
+## Dive In 🏊‍♂️
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+1. **Installation:**
 
-## Build
+```
+npm install simpledocs
+```
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+2. **Embark on Your Documentation Journey:**
 
-## Running unit tests
+Set out with our [Quick Start Guide](https://simpledocs.dev/get-started).
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+3. **Customize and Conquer:**
 
-## Running end-to-end tests
+Explore the depths with our [Configuration Guide](https://simpledocs.dev/get-started).
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+## Behind the Magic 🛠️
 
-## Further help
+Driving SimpleDocs is a trio of powerful frameworks and libraries:
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+- Angular: The backbone that provides a robust and modular architecture.
+- ngx-markdown: Skillfully converting markdown content to create engaging documentation.
+- Tailwind SCSS: Giving your documentation that sleek and modern design edge.
+
+## Roadmap 🚀
+
+- [x] Angular Foundation
+- [x] Markdown Handling with ngx-markdown
+- [x] Tailwind SCSS Styling
+- [ ] OpenAPI Specification (OAS) Support for JSON/YAML
+- [ ] One-Click Azure Deployment (Coming Soon!)
+
+## Join the Cause 🤝
+
+Open-source thrives on collaborative energy. Whether brainstorming features or contributing to the codebase, your involvement enriches SimpleDocs. Familiarize yourself with our [CONTRIBUTING](https://simpledocs.dev/get-started) guidelines.
+
+## Feedback and Insights? 💭
+
+Help refine SimpleDocs. Browse our [FAQs](https://simpledocs.dev/get-started) or share your insights via an [issue](https://github.com/simptel/simpledocs/issues) on GitHub.
+
+## License and Love 💚
+
+SimpleDocs proudly operates under the MIT License. For the specifics, head to the [LICENSE](https://github.com/simptel/simpledocs/blob/main/LICENSE.md) section.
