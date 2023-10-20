@@ -1,0 +1,13 @@
+<div class="w-full h-full">
+  <input 
+    type="text" 
+    [(ngModel)]="repoUrl"
+    placeholder="Your Github Repo Link" 
+    class="rounded-md p-3 w-2/3 border dark:bg-gray-700 dark:border-0 dark:text-white relative left-[5%] mt-10"
+  >
+  <button
+    (click)="saveRepoUrl()"
+    class="dark:bg-gray-700 bg-gray-900 text-slate-100 p-3 relative left-[6%] rounded-md mt-10">
+    Show Docs
+  </button>
+</div>
