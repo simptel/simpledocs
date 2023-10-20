@@ -1,22 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { GetStartedComponent } from './get-started/get-started.component';
 
-const routes: Routes = [
-  {
-    path: 'getting-started',
-    component: GetStartedComponent
-  },
-  {
-    path: '',
-    pathMatch: 'full',
-    redirectTo: 'getting-started',
-  },
-  {
-    path: '**',
-    redirectTo: 'getting-started',
-  },
-];
+const routes: Routes = [];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
