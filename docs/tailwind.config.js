@@ -1,9 +1,20 @@
+typographyPlugin = require('@tailwindcss/typography')
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ["./docs/src/**/*.{html,js}"],
+  content: ["./src/**/*.{html,js,ts}"],
+  darkMode: 'class',
   theme: {
-    extend: {},
+    extend: {
+      typography: ({ theme }) => ({
+        cyan: {
+          css: {
+            '--tw-prose-invert-links': theme('colors.cyan[500]'),
+          }
+        }
+      })
+    },
   },
-  plugins: [],
+  plugins: [typographyPlugin],
 }
 
