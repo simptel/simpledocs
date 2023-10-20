@@ -2,8 +2,8 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 import { Route, Router, ActivatedRoute } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
-import { SharedService } from '../shared/shared.service';
-import { GetStartedComponent } from '../get-started/get-started.component';
+import { SharedService } from '../shared/github.service';
+import { PageComponent } from '../get-started/get-started.component';
 
 @Component({
   selector: 'app-sidemenu',
@@ -101,7 +101,7 @@ export class SidemenuComponent implements OnInit {
         this.routes.push({
           path: path,
           data: { label: item.name },
-          component: GetStartedComponent
+          component: PageComponent
         });
         this.router.resetConfig(this.routes);
       });

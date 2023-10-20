@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 
-import { SharedService } from './shared.service';
+import { SharedService } from './github.service';
 
 describe('SharedService', () => {
   let service: SharedService;
