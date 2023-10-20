@@ -4,11 +4,11 @@ import { ActivatedRoute, Route, Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 
 @Component({
-  selector: 'app-get-started',
-  templateUrl: './get-started.component.html',
-  styleUrls: ['./get-started.component.scss']
+  selector: 'app-page',
+  templateUrl: './page.component.html',
+  styleUrls: ['./page.component.scss']
 })
-export class GetStartedComponent implements OnInit {
+export class PageComponent implements OnInit {
   repoName!: string;
   pageUrls!: string[];
   directoryUrls!: string[];

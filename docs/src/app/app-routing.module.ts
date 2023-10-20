@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { GetStartedComponent } from './get-started/get-started.component';
+import { PageComponent } from './page/page.component';
 
 const routes: Routes = [
   {
     path: 'getting-started',
-    component: GetStartedComponent
+    component: PageComponent
   },
   {
     path: '',

@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { GetStartedRoutingModule } from './get-started-routing.module';
+import { PageRoutingModule } from './page-routing.module';
 import { MarkdownModule } from 'ngx-markdown';
 
 
@@ -9,8 +9,8 @@ import { MarkdownModule } from 'ngx-markdown';
   declarations: [],
   imports: [
     CommonModule,
-    GetStartedRoutingModule,
+    PageRoutingModule,
     MarkdownModule.forChild(),
   ]
 })
-export class GetStartedModule { }
+export class PageModule { }
