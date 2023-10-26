@@ -13,9 +13,7 @@ export class GithubService {
   refreshDocs$ = this.notify.asObservable();
   
   public setDocsRefresh(data: boolean) {
-    if (data) {
-      this.notify.next(data);
-    }
+    this.notify.next(data);
   }
 
   constructor(private http: HttpClient) { }
