@@ -9,12 +9,14 @@ import { MarkdownModule } from 'ngx-markdown';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { SidemenuComponent } from './sidemenu/sidemenu.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     PageComponent,
     InputRepoComponent,
+    SidemenuComponent
   ],
   imports: [
     BrowserModule,
