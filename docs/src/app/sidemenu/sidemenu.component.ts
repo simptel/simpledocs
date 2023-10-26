@@ -3,7 +3,7 @@ import { DOCUMENT } from '@angular/common';
 import { Route, Router, ActivatedRoute } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { SharedService } from '../shared/github.service';
-import { PageComponent } from '../get-started/get-started.component';
+import { PageComponent } from '../page/page.component';
 
 @Component({
   selector: 'app-sidemenu',
