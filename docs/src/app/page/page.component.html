@@ -1,0 +1,24 @@
+<div class="w-full">
+  <app-input-repo></app-input-repo>
+  <div class="w-[80%] h-full relative left-[5%] min-h-screen mt-10">
+    <h1 id="getting-started" class="font-bold dark:text-white text-2xl mb-5">
+      {{ pageName }}
+    </h1>
+    
+    <div *ngFor="let pageUrl of pageUrls">
+      <markdown 
+        class="prose dark:prose-invert dark:prose-cyan"
+        [src]="pageUrl"
+      ></markdown>
+    </div>
+    
+    <div *ngFor="let directoryUrl of directoryUrls" class="mt-5">
+      <markdown 
+        class="prose dark:prose-invert dark:prose-cyan"
+        [src]="directoryUrl"
+      ></markdown>
+    </div>
+  </div>
+</div>
+  
+    
