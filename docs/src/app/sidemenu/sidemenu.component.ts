@@ -2,7 +2,7 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 import { Route, Router, ActivatedRoute } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
-import { SharedService } from '../shared/github.service';
+import { GithubService } from '../shared/github.service';
 import { PageComponent } from '../page/page.component';
 
 @Component({
@@ -22,7 +22,7 @@ export class SidemenuComponent implements OnInit {
   constructor(
     @Inject(DOCUMENT) private document: Document, 
     private router: Router, 
-    private sharedService: SharedService, 
+    private githubService: GithubService, 
     private http: HttpClient,
     private route: ActivatedRoute
   ) {
@@ -32,7 +32,7 @@ export class SidemenuComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.sharedService.refreshDocs$.subscribe(res => {
+    this.githubService.refreshDocs$.subscribe((res: boolean) => {
       if (res) {
         this.getRoutes();
         this.getMenuItems();
@@ -53,7 +53,7 @@ export class SidemenuComponent implements OnInit {
   }
 
   getRepoUrl() {
-    this.sharedService.getRepoUrl().subscribe(url => {
+    this.githubService.getRepoUrl().subscribe((url: string) => {
       this.repoName = url;
     });
   }
@@ -78,15 +78,15 @@ export class SidemenuComponent implements OnInit {
 
   getMenuItems() {
     this.getRepoUrl();
-    this.sharedService.showDocsApi(this.repoName).subscribe(res => {
+    this.githubService.showDocsApi(this.repoName).subscribe((res: object) => {
       this.directories = res;
     });
   }
 
   getRoutes() {
     this.getRepoUrl();
-    this.sharedService.showDocsApi(this.repoName)
-    .subscribe(res => {
+    this.githubService.showDocsApi(this.repoName)
+    .subscribe((res: object) => {
       this.addRoutes(res);
     });  
   }

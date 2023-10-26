@@ -5,7 +5,7 @@ import { BehaviorSubject, Subject } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class SharedService {
+export class GithubService {
 
   private repoUrl: Subject<string> = new BehaviorSubject<string>('simptel/docs.simptel.com');
   public notify = new BehaviorSubject<boolean>(false);
