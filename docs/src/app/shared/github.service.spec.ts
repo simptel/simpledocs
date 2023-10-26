@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { SharedService } from './github.service';
+import { GithubService } from './github.service';
 
 describe('SharedService', () => {
-  let service: SharedService;
+  let service: GithubService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(SharedService);
+    service = TestBed.inject(GithubService);
   });
 
   it('should be created', () => {

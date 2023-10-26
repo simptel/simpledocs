@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { SharedService } from '../shared/github.service';
+import { GithubService } from '../shared/github.service';
 import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -10,7 +10,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 export class InputRepoComponent {
   repoUrl!: string;
 
-  constructor(private sharedService: SharedService, private router: Router, 
+  constructor(private githubService: GithubService, private router: Router, 
     private route: ActivatedRoute) {
       this.repoUrl = 'https://github.com/simptel/docs.simptel.com';
   }
@@ -19,7 +19,7 @@ export class InputRepoComponent {
     if (this.repoUrl) {
       this.repoUrl = this.repoUrl.substring(19, this.repoUrl.length);
     }
-    this.sharedService.saveRepoUrl(this.repoUrl);
-    this.sharedService.setDocsRefresh(true);
+    this.githubService.saveRepoUrl(this.repoUrl);
+    this.githubService.setDocsRefresh(true);
   }
 }

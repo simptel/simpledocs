@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { SharedService } from '../shared/github.service';
+import { GithubService } from '../shared/github.service';
 import { ActivatedRoute, Route, Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 
@@ -18,7 +18,7 @@ export class PageComponent implements OnInit {
   updateDocs = false;
 
   constructor(
-    private sharedService: SharedService, 
+    private githubService: GithubService, 
     private router: Router, 
     private route: ActivatedRoute, 
     private http: HttpClient
@@ -30,7 +30,7 @@ export class PageComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.sharedService.refreshDocs$.subscribe((res:boolean) => {
+    this.githubService.refreshDocs$.subscribe((res:boolean) => {
       if (res) {
         this.getRepoUrl();
         this.showDocs();
@@ -39,7 +39,7 @@ export class PageComponent implements OnInit {
   }
 
   getRepoUrl() {
-    this.sharedService.getRepoUrl().subscribe((url:string) => {
+    this.githubService.getRepoUrl().subscribe((url:string) => {
       this.repoName = url;
     });
   }
