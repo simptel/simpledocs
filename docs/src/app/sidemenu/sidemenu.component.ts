@@ -1,6 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
-import { Route, Router, ActivatedRoute } from '@angular/router';
+import { Route, Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { GithubService } from '../shared/github.service';
 import { PageComponent } from '../page/page.component';
@@ -23,19 +23,18 @@ export class SidemenuComponent implements OnInit {
     @Inject(DOCUMENT) private document: Document, 
     private router: Router, 
     private githubService: GithubService, 
-    private http: HttpClient,
-    private route: ActivatedRoute
+    private http: HttpClient
   ) {
     this.routes = [];
     this.getRoutes();
-    this.getMenuItems();
+    this.getRepoUrl();
   }
 
   ngOnInit(): void {
     this.githubService.refreshDocs$.subscribe((res: boolean) => {
       if (res) {
         this.getRoutes();
-        this.getMenuItems();
+        this.getRepoUrl();
       }
     })
   }
@@ -76,13 +75,6 @@ export class SidemenuComponent implements OnInit {
     });
   }
 
-  getMenuItems() {
-    this.getRepoUrl();
-    this.githubService.showDocsApi(this.repoName).subscribe((res: object) => {
-      this.directories = res;
-    });
-  }
-
   getRoutes() {
     this.getRepoUrl();
     this.githubService.showDocsApi(this.repoName)
@@ -94,9 +86,12 @@ export class SidemenuComponent implements OnInit {
   addRoutes(res: object) {
     if (res instanceof Array) {
       res.forEach(item => {
-        const path = item.name.includes(' ') 
-          ? item.name.replace(' ', '-').toLocaleLowerCase() 
-          : item.name.toLocaleLowerCase();
+        let path = '';
+        if(item.name?.includes(' ')) {
+          path = item.name.replace(' ', '-').toLocaleLowerCase(); 
+        } else {
+          path = item.name?.toLocaleLowerCase();
+        }
         !this.routes?.find(route => route.path == path) && 
         this.routes.push({
           path: path,

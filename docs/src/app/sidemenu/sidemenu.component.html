@@ -25,11 +25,6 @@
           class="flex" 
           (click)="toggleSubMenu(i, route.data?.['label'])"
         >
-          <!-- <img src="assets/expand-menu.png" 
-            alt="expand-menu" 
-            class="h-4 w-4 mt-1 mr-2"
-            [ngClass]="{'rotate-180': showItems === i}"
-          > -->
           <div class="cursor-pointer hover:font-medium">
             {{ route.data?.['label'] }}
           </div>
@@ -45,25 +40,6 @@
           </div>
         </div>
       </div>
-      <!-- <div *ngFor="let dir of directories | keyvalue; index as i" class="mt-5">
-        <div *ngFor="let d of dir.value | keyvalue" class="ml-16">
-          <div 
-            class="cursor-pointer hover:font-medium"
-            (click)="openSubMenu(d.key == 'name' ? d.value : '')"> 
-            
-          </div>
-          <div *ngFor="let file of files | keyvalue">
-            <div *ngFor="let f of file.value | keyvalue">
-              <div 
-                *ngIf="pageName == d.value && showItems === i" 
-                class="cursor-pointer hover:font-medium mt-5 ml-8"
-              >
-                {{ f.key.includes('name') ? f.value : '' }}
-              </div>
-            </div>
-          </div>
-        </div>
-      </div> -->
     </div>
   </div>
   
