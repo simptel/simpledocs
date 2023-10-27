@@ -9,11 +9,10 @@ describe('GithubService', () => {
   let httpMock: HttpTestingController;
 
   const repoUrl = new BehaviorSubject<string>('simptel/docs.simptel.com');
-  let notify: BehaviorSubject<string>;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [ HttpClientTestingModule ],
+      providers: [HttpClientTestingModule],
       imports: [HttpClientTestingModule]
     });
     service = TestBed.inject(GithubService);
@@ -24,12 +23,12 @@ describe('GithubService', () => {
     expect(service).toBeTruthy();
   });
 
-  it('should set docs refresh', done => {
+  it('should set docs refresh', () => {
     service.setDocsRefresh(true);
   });
 
   it('should get repo url', done => {
-    service.getRepoUrl().subscribe(url => {
+    service.getRepoUrl().subscribe(() => {
       done();
     });
   });
