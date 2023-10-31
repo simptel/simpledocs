@@ -30,6 +30,25 @@ describe('SidemenuComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should load component on init if refreshDocs to be false', () => {
+    component.ngOnInit();
+    const mockRes = false;
+    service.refreshDocs$.subscribe(res => {
+      expect(res).toBe(mockRes);
+    });
+  });
+
+  it('should load component on init if refreshDocs to be true', () => {
+    component.ngOnInit();
+    const mockRes = true;
+    service.setDocsRefresh(true);
+    service.refreshDocs$.subscribe(res => {
+      expect(res).toBe(mockRes);
+      component.getRoutes();
+      component.getRepoUrl();
+    });
+  });
   
   it('should toggle theme if light', () => {
     component.toggleTheme();
