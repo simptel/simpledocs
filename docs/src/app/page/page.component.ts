@@ -48,36 +48,44 @@ export class PageComponent implements OnInit {
     this.pageUrls = [];
     this.pageName = this.route.snapshot.data['label'] || 'Getting Started';
     this.http.get(`https://api.github.com/repos/${this.repoName}/contents/docs/${this.pageName}`)
-    .subscribe(res => {      
-      if (res instanceof Array) {
-        res.forEach(item => {
-          if (item.type == 'dir') {
-            this.showDirectoryFiles(item);
-          } else if (item.type == 'file') {
-            const url = this.getDownloadUrl(item);
-            !this.pageUrls.includes(url) && 
-            this.pageUrls.push(url);
-          }
+    .subscribe({
+      next: (res) => {
+        Object.entries(res).forEach(([key, value], index) => {
+          this.saveDownloadUrls(value);
         });
-      }
+      },
+      error: (error) => console.error(error),
+      complete: () => console.log('Retrieved all the directories')
     });
+  }
+
+  saveDownloadUrls(item:any) {
+    if (item.type == 'dir') {
+      this.showDirectoryFiles(item);
+    } else {
+      const url = this.getDownloadUrl(item);
+      if (!this.pageUrls.includes(url)) 
+        this.pageUrls.push(url);
+    }
   }
 
   showDirectoryFiles(item: any) {
     this.http.get(`https://api.github.com/repos/${this.repoName}/contents/docs/${this.pageName}/${item.name}`)
-    .subscribe(res => {
-      if (res instanceof Array) {
-        res.forEach(file => {
-          const url = this.getDownloadUrl(file);
-          !this.directoryUrls.includes(url) && 
-          this.directoryUrls.push(url);
+    .subscribe({
+      next: (res) => {
+        Object.entries(res).forEach(([key, value], index) => {
+          const url = this.getDownloadUrl(value);
+          if (!this.directoryUrls.includes(url))
+            this.directoryUrls.push(url);
         });
-      }
+      }, 
+      error: (error) => console.error(error),
+      complete: () => console.log('Retrieved sub directory files')
     });
   }
 
   getDownloadUrl(item: any) {
-    const ext = item.name.substring(item.name.length-2, item.name.length);
+    const ext = item.name?.substring(item.name.length-2, item.name.length);
     if (ext == 'md') {
       return item.download_url;
     }
