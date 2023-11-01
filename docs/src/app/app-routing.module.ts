@@ -10,11 +10,11 @@ const routes: Routes = [
   {
     path: '',
     pathMatch: 'full',
-    redirectTo: 'getting-started',
+    redirectTo: '/getting-started',
   },
   {
     path: '**',
-    redirectTo: 'getting-started',
+    redirectTo: '/getting-started',
   },
 ];
 
