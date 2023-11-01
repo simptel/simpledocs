@@ -6,6 +6,10 @@ module.exports = {
   darkMode: 'class',
   theme: {
     extend: {
+      screens: {
+        'xss': '250px',
+        'xs': '288px',
+      },
       typography: ({ theme }) => ({
         cyan: {
           css: {
