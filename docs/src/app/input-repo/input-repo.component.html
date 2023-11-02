@@ -1,13 +1,18 @@
-<div class="w-full h-full">
+<div class="w-full mt-5 ml-5">
   <input 
     type="text" 
     [(ngModel)]="repoUrl"
     placeholder="https://github.com/simptel/docs.simptel.com" 
-    class="rounded-md p-3 w-2/3 border dark:bg-gray-700 dark:border-0 dark:text-white relative left-[5%] mt-10"
+    class="rounded-lg p-2 text-sm w-3/4 border dark:border-gray-600 dark:bg-gray-700 dark:text-white"
   >
   <button
     (click)="saveRepoUrl()"
-    class="dark:bg-gray-700 bg-gray-900 text-slate-100 p-3 relative left-[6%] rounded-md mt-10">
-    Show Docs
+    class="dark:bg-gray-700 text-slate-100 rounded-md absolute ml-1 p-1 border dark:border-gray-600">
+    <img 
+      src="assets/expand-menu-light.svg" alt="Show docs"
+      class="h-7 w-7 dark:hidden">
+    <img 
+      src="assets/expand-menu-dark.svg" alt="Show docs"
+      class="h-7 w-7 hidden dark:block">
   </button>
 </div>
