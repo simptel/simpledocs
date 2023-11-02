@@ -29,6 +29,7 @@ export class SidemenuComponent implements OnInit {
     this.routes = [];
     this.getRoutes();
     this.getRepoUrl();
+    localStorage.setItem('color-theme', this.theme);
   }
 
   ngOnInit(): void {
