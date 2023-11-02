@@ -8,7 +8,7 @@ import { InputRepoComponent } from './input-repo/input-repo.component';
 import { MarkdownModule } from 'ngx-markdown';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
-import { CommonModule } from '@angular/common';
+import { CommonModule, HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { SidemenuComponent } from './sidemenu/sidemenu.component';
 
 @NgModule({
@@ -29,7 +29,7 @@ import { SidemenuComponent } from './sidemenu/sidemenu.component';
       sanitize: SecurityContext.NONE,
     })
   ],
-  providers: [],
+  providers: [{provide: LocationStrategy, useClass: HashLocationStrategy}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
