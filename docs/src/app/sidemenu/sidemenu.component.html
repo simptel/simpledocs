@@ -1,39 +1,40 @@
-<div class="w-full bg-gray-900 text-white h-full min-h-screen pt-3 dark:border-r dark:border-gray-50">
-    <div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-      <div class="text-white font-medium text-xl mr-16">SimpleDocs</div>
-      <button type="button" 
-        (click)="toggleTheme()" 
-        class="relative rounded-full bg-gray-800 p-1 pl-2 pr-2 text-gray-400 hover:text-white focus:outline-none"
-      >
-        <span class="absolute -inset-1.5"></span>
-        <button class="mt-1">
-          <img [hidden]="theme === 'light'" src="assets/icon-light-on.svg" alt="dark-mode">
-          <img [hidden]="theme === 'dark'" src="assets/icon-light-off.svg" alt="light-mode">
-        </button>
-      </button>
-      <div class="relative ml-3">
-          <a href="https://github.com/jfcere/ngx-markdown">
-            <img class="github-icon" src="assets/icon-github.svg" alt="github">
-          </a>
+<div [ngClass]="showInput === true ? 'block absolute left-0 w-2/3 z-10 bg-gray-100' : 'hidden lg:block'" 
+  class="dark:bg-gray-900 dark:text-white h-full min-h-screen pt-3 border-r border-gray-300 dark:border-gray-50">
+    <div class="flex items-center pr-2">
+      <div class="ml-5 dark:text-white font-medium text-xl mr-10 w-2/3">SimpleDocs</div>
+      <div class="mt-2 w-1/3">
+        <label class="relative inline-flex items-center cursor-pointer">
+          <input type="checkbox" value="" class="sr-only peer" (click)="toggleTheme()">
+          <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:border peer-checked:border-gray-100 peer-checked:bg-gray-900"></div>
+        </label>
+      </div>
+      <div class="p-2 cursor-pointer" *ngIf="showInput === true" (click)="showInput = false">
+        X
       </div>
     </div>
+
+    <!-- Github repo input -->
+    <app-input-repo></app-input-repo>
   
     <!-- sidemenu -->
-    <div class="h-full w-full hidden sm:block text-white overflow-auto mt-5">
-      <div *ngFor="let route of routes; index as i" class="mt-5 ml-16">
-        <div 
-          class="flex" 
+    <div class="h-full w-full dark:text-white overflow-auto mt-5">
+      <div *ngFor="let route of routes; index as i" class="mt-4">
+        <div class="cursor-pointer hover:font-medium text-sm" 
           (click)="toggleSubMenu(i, route.data?.['label'])"
         >
-          <div class="cursor-pointer hover:font-medium">
-            {{ route.data?.['label'] }}
+          <div 
+            [ngClass]= "showItems == i ? 
+              'dark:p-2 dark:pl-0 dark:bg-gray-700 rounded-tr-xl rounded-br-xl w-5/6 text-blue-600 dark:text-cyan-500 font-bold' : 
+              'font-medium text-gray-700 dark:text-white'"
+          >
+            <span class="ml-5"> {{ route.data?.['label'] }} </span>
           </div>
         </div>
         <div *ngFor="let file of files | keyvalue">
           <div *ngFor="let f of file.value | keyvalue">
             <div 
               *ngIf="showItems === i" 
-              class="cursor-pointer hover:font-medium mt-5 ml-8"
+              class="cursor-pointer hover:font-medium mt-3 ml-10 text-sm"
             >
               {{ f.key === 'name' ? f.value : '' }}
             </div>
@@ -41,5 +42,9 @@
         </div>
       </div>
     </div>
-  </div>
-  
+</div>
+<div class="block lg:hidden absolute mt-5 ml-5" (click)="showInput = true">
+  <svg xmlns="http://www.w3.org/2000/svg" title="Menu" viewBox="0 0 50 50" class="w-6 h-6 dark:fill-white">
+    <path d="M 5 8 A 2.0002 2.0002 0 1 0 5 12 L 45 12 A 2.0002 2.0002 0 1 0 45 8 L 5 8 z M 5 23 A 2.0002 2.0002 0 1 0 5 27 L 45 27 A 2.0002 2.0002 0 1 0 45 23 L 5 23 z M 5 38 A 2.0002 2.0002 0 1 0 5 42 L 45 42 A 2.0002 2.0002 0 1 0 45 38 L 5 38 z"/>
+  </svg>
+</div>

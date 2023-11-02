@@ -18,6 +18,7 @@ export class SidemenuComponent implements OnInit {
   directories!: object;
   files!: object;
   showItems = -1;
+  showInput = false;
 
   constructor(
     @Inject(DOCUMENT) private document: Document, 
@@ -28,6 +29,7 @@ export class SidemenuComponent implements OnInit {
     this.routes = [];
     this.getRoutes();
     this.getRepoUrl();
+    localStorage.setItem('color-theme', this.theme);
   }
 
   ngOnInit(): void {
@@ -73,6 +75,10 @@ export class SidemenuComponent implements OnInit {
     .subscribe(res => {   
       this.files = res;   
     });
+  }
+
+  onChange(page: string) {
+    this.router.navigateByUrl(page);
   }
 
   getRoutes() {
