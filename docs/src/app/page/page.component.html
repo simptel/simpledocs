@@ -4,7 +4,7 @@
       {{ pageName }}
     </h1>
     
-    <div *ngFor="let pageUrl of pageUrls">
+    <div *ngFor="let pageUrl of pageUrls" #pageContent>
       <markdown 
         class="prose dark:prose-invert dark:prose-cyan"
         [src]="pageUrl"
