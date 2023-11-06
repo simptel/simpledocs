@@ -1,4 +1,4 @@
-describe('should test sidemenu', () => {
+describe('should test docs page', () => {
   it('passes', () => {
     cy.visit('http://localhost:4200/#/getting-started');
     cy.get('h1').should('contain', 'Getting Started');
