@@ -93,12 +93,15 @@ export class SidemenuComponent implements OnInit {
     
     docs instanceof Array &&
     docs.forEach(doc => {
-      const menuItem: NestedMenu = { name: '', children: [] };
-      const children = this.getMenuItemChildren(doc.name);
-      menuItem.name = doc.name;
-      menuItem.children = children;
+      if (this.isMDFile(doc)) {
+        const menuItem: NestedMenu = { name: '', children: [] };
+        const children = this.getMenuItemChildren(doc.name);
+        menuItem.name = doc.name;
+        menuItem.children = children;
 
-      MENU_DATA.push(menuItem);
+        menuItem.name && 
+        MENU_DATA.push(menuItem);
+      }
     });
 
     this.dataSource = new ArrayDataSource(MENU_DATA);
@@ -122,6 +125,7 @@ export class SidemenuComponent implements OnInit {
       const obj = this.handleSubMenuItems(directoryName, item.name);
       menuItem.children?.push(obj);
     } else {
+      this.isMDFile(item) &&
       menuItem.children?.push({ name: item.name });
     }
     return menuItem.children;
@@ -136,10 +140,21 @@ export class SidemenuComponent implements OnInit {
     .subscribe(res => {
       res instanceof Array &&
       res.forEach(item => {
+        this.isMDFile(item) &&
         menuItem.children?.push({ name: item.name })
       });
     })
     return menuItem;
+  }
+
+  isMDFile(item: any): boolean {
+    const ext = item.type === 'file' && 
+      item.name?.substring(item.name.length-2, item.name.length);
+    if (ext === 'md' || item.type === 'dir') {
+      return true;
+    } else {
+      return false;
+    }
   }
 
   addRoutes(routes: object) {
