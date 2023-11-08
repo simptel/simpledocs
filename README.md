@@ -51,4 +51,4 @@ Help refine SimpleDocs. Browse our [FAQs](https://simpledocs.dev/get-started) or
 
 ## License and Love 💚
 
-SimpleDocs proudly operates under the MIT License. For the specifics, head to the [LICENSE](https://github.com/simptel/simpledocs/blob/main/LICENSE.md) section.
+SimpleDocs proudly operates under the MIT License. For the specifics, head to the [LICENSE](https://github.com/simptel/simpledocs/blob/main/LICENSE) section.
