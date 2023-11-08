@@ -8,9 +8,9 @@
           <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:border peer-checked:border-gray-100 peer-checked:bg-gray-900"></div>
         </label>
       </div>
-      <div class="p-2 cursor-pointer" *ngIf="showInput === true" (click)="showInput = false">
+      <button class="p-2 cursor-pointer" *ngIf="showInput === true" (click)="showInput = false">
         X
-      </div>
+      </button>
     </div>
 
     <!-- Github repo input -->
@@ -18,33 +18,30 @@
   
     <!-- sidemenu -->
     <div class="h-full w-full dark:text-white overflow-auto mt-5">
-      <div *ngFor="let route of routes; index as i" class="mt-4">
-        <div class="cursor-pointer hover:font-medium text-sm" 
-          (click)="toggleSubMenu(i, route.data?.['label'])"
-        >
-          <div 
-            [ngClass]= "showItems == i ? 
-              'dark:p-2 dark:pl-0 dark:bg-gray-700 rounded-tr-xl rounded-br-xl w-5/6 text-blue-600 dark:text-cyan-500 font-bold' : 
-              'font-medium text-gray-700 dark:text-white'"
-          >
-            <span class="ml-5"> {{ route.data?.['label'] }} </span>
-          </div>
-        </div>
-        <div *ngFor="let file of files | keyvalue">
-          <div *ngFor="let f of file.value | keyvalue">
-            <div 
-              *ngIf="showItems === i" 
-              class="cursor-pointer hover:font-medium mt-3 ml-10 text-sm"
-            >
-              {{ f.key === 'name' ? f.value : '' }}
+      <cdk-tree [dataSource]="dataSource" [treeControl]="treeControl">
+        <cdk-nested-tree-node *cdkTreeNodeDef="let node; when: hasChild" class="example-tree-node mt-2">
+          <button [attr.aria-label]="'Toggle ' + node.name" cdkTreeNodeToggle>
+            <div [ngClass]="{'rotate-180': treeControl.isExpanded(node)}" *ngIf="hasChild(1, node)">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30" class="w-4 h-4 dark:fill-white">    
+                <path d="M27,18v2c0,0.386-0.223,0.738-0.572,0.904c-0.349,0.166-0.762,0.115-1.062-0.13L15,12.292L4.633,20.774 c-0.299,0.245-0.712,0.295-1.062,0.13C3.221,20.739,3,20.386,3,20v-2c0-0.3,0.135-0.584,0.367-0.774l11-9 c0.369-0.301,0.898-0.301,1.267,0l11,9C26.865,17.416,27,17.7,27,18z"/>
+              </svg>
             </div>
+          </button>
+          <button class="ml-2" (click)="toggleSubMenu(node.name, node); ">
+            {{node.name}}
+          </button>
+          <div [class.example-tree-invisible]="!treeControl.isExpanded(node)">
+            <ng-container cdkTreeNodeOutlet></ng-container>
           </div>
-        </div>
-      </div>
+          <div *ngIf="treeControl.isExpanded(node)">
+            <ng-container cdkTreeNodeOutlet></ng-container>
+          </div>
+        </cdk-nested-tree-node>
+      </cdk-tree>
     </div>
 </div>
-<div class="block lg:hidden absolute mt-5 ml-5" (click)="showInput = true">
+<button class="block lg:hidden absolute mt-5 ml-5" (click)="showInput = true">
   <svg xmlns="http://www.w3.org/2000/svg" title="Menu" viewBox="0 0 50 50" class="w-6 h-6 dark:fill-white">
     <path d="M 5 8 A 2.0002 2.0002 0 1 0 5 12 L 45 12 A 2.0002 2.0002 0 1 0 45 8 L 5 8 z M 5 23 A 2.0002 2.0002 0 1 0 5 27 L 45 27 A 2.0002 2.0002 0 1 0 45 23 L 5 23 z M 5 38 A 2.0002 2.0002 0 1 0 5 42 L 45 42 A 2.0002 2.0002 0 1 0 45 38 L 5 38 z"/>
   </svg>
-</div>
+</button>

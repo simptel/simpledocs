@@ -10,6 +10,7 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { CommonModule, HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { SidemenuComponent } from './sidemenu/sidemenu.component';
+import { CdkTreeModule } from '@angular/cdk/tree';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { SidemenuComponent } from './sidemenu/sidemenu.component';
     FormsModule,
     CommonModule,
     HttpClientModule,
+    CdkTreeModule,
     MarkdownModule.forRoot({
       loader: HttpClient,
       sanitize: SecurityContext.NONE,
