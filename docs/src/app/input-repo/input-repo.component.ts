@@ -10,7 +10,9 @@ export class InputRepoComponent {
   repoUrl!: string;
 
   constructor(private githubService: GithubService) {
-    this.repoUrl = 'https://github.com/simptel/docs.simptel.com';
+    githubService.getRepoUrl().subscribe(url => {
+      this.repoUrl = 'https://github.com/' + url;
+    });
   }
 
   saveRepoUrl() {
