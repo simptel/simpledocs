@@ -7,7 +7,7 @@ import { BehaviorSubject, Subject } from 'rxjs';
 })
 export class GithubService {
 
-  private repoUrl: Subject<string> = new BehaviorSubject<string>('simptel/docs.simptel.com');
+  private repoUrl: Subject<string> = new BehaviorSubject<string>('simptel/simpledocs');
   public notify = new BehaviorSubject<boolean>(false);
 
   refreshDocs$ = this.notify.asObservable();
