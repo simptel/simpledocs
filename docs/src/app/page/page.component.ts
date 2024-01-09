@@ -46,7 +46,8 @@ export class PageComponent implements OnInit {
 
   showDocs() {
     this.pageUrls = [];
-    this.pageName = this.route.snapshot.data['label'] || 'Getting Started';
+    this.pageName = this.router.url.replace('-', ' ').slice(1).split(' ')
+      .map((word) => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
     this.http.get(`https://api.github.com/repos/${this.repoName}/contents/docs/${this.pageName}`)
     .subscribe({
       next: (res) => {
