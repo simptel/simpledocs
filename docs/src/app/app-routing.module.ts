@@ -8,6 +8,22 @@ const routes: Routes = [
     component: PageComponent
   },
   {
+    path: 'authentication',
+    component: PageComponent
+  },
+  {
+    path: 'authorization',
+    component: PageComponent
+  },
+  {
+    path: 'introduction',
+    component: PageComponent
+  },
+  {
+    path: 'access',
+    component: PageComponent
+  },
+  {
     path: '',
     pathMatch: 'full',
     redirectTo: 'getting-started',
