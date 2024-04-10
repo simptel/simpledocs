@@ -25,21 +25,6 @@ Set out with our [Quick Start Guide](https://simpledocs.dev/get-started).
 
 Explore the depths with our [Configuration Guide](https://simpledocs.dev/get-started).
 
-## Behind the Magic 🛠️
-
-Driving SimpleDocs is a trio of powerful frameworks and libraries:
-
-- Angular: The backbone that provides a robust and modular architecture.
-- ngx-markdown: Skillfully converting markdown content to create engaging documentation.
-- Tailwind SCSS: Giving your documentation that sleek and modern design edge.
-
-## Roadmap 🚀
-
-- [x] Angular Foundation
-- [x] Markdown Handling with ngx-markdown
-- [x] Tailwind SCSS Styling
-- [ ] OpenAPI Specification (OAS) Support for JSON/YAML
-- [ ] One-Click Azure Deployment (Coming Soon!)
 
 ## Join the Cause 🤝
 
