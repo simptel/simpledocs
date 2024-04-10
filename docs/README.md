@@ -9,21 +9,6 @@ Documenting projects should be a delightful endeavor. At SimpleDocs, our mission
 - Minimalistic Mastery: Zero in on the content; leave the presentation to us.
 - Built on Angular: Harnessing the power and versatility of Angular.
 
-## Dive In 🏊‍♂️
-
-1. **Installation:**
-
-```
-npm install simpledocs
-```
-
-2. **Embark on Your Documentation Journey:**
-
-Set out with our [Quick Start Guide](https://simpledocs.dev/get-started).
-
-3. **Customize and Conquer:**
-
-Explore the depths with our [Configuration Guide](https://simpledocs.dev/get-started).
 
 
 ## Join the Cause 🤝
