@@ -50,6 +50,7 @@ export class PageComponent implements OnInit {
     this.http.get(`https://api.github.com/repos/${this.repoName}/contents/docs/${this.pageName}`)
     .subscribe({
       next: (res) => {
+        this.saveDownloadUrls(res);
         Object.entries(res).forEach(([key, value], index) => {
           this.saveDownloadUrls(value);
         });
